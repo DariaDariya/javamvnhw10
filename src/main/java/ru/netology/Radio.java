@@ -23,10 +23,12 @@ public class Radio {
         currentVolume = 0;
     }
 
-    public void increaseVolume() {
+    public void increaseToNextVolume() {
         if (currentVolume < 10) {
             currentVolume = currentVolume + 1;
         }
+    }
+    public void increaseToPrevVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
@@ -54,21 +56,22 @@ public class Radio {
 
         currentStation = 0;
     }
-    public void next(int newCurrentStation) {
+    public int nextStation() {
 
-        if (newCurrentStation > 9) {
+        if (currentStation >= 9) {
             currentStation = 0;
-        }
-        if (newCurrentStation >= 0) {
+        } else {
             currentStation = currentStation + 1;
         }
+        return currentStation;
     }
-    public void prev(int newCurrentStation) {
-        if (newCurrentStation <= 9) {
+    public int prevStation() {
+        if (currentStation <= 0) {
+            currentStation = 9;
+        } else {
             currentStation = currentStation - 1;
         }
-        if (newCurrentStation < 0) {
-            currentStation = 9;
-        }
+        return currentStation;
     }
+
 }
